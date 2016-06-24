@@ -1,6 +1,6 @@
-# http2k Cookbook
+# memcached Cookbook
 
-cookbook to install and configure redborder http2k
+cookbook to install and configure redborder memcached
 
 ### Platforms
 
