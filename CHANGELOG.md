@@ -1,4 +1,4 @@
-cookbook iptables CHANGELOG
+cookbook memcached CHANGELOG
 ==========================
 
 0.0.1

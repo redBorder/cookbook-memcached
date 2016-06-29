@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: iptables
+# Cookbook Name:: memcached
 # Recipe:: default
 #
-# Copyright 2016, redborder
+# redborder 2016
 #
 # AFFERO GENERAL PUBLIC LICENSE V3
 #
