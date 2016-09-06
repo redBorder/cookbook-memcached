@@ -7,7 +7,6 @@
 # AFFERO GENERAL PUBLIC LICENSE V3
 #
 
-iptables_config "config" do
-  mystring "test"
+memcached_config "config" do
   action :add
 end
