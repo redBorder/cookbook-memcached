@@ -18,7 +18,7 @@ action :add do
     user user do
       action :create
     end
-  
+
     directory logdir do
       owner user
       group group
@@ -39,14 +39,14 @@ action :add do
         :cachesize => cachesize,
         :options => options
       })
-      notifies :restart, "service[memcached]", :delayed 
-    end  
- 
+      notifies :restart, "service[memcached]", :delayed
+    end
+
     service "memcached" do
       service_name "memcached"
       supports :status => true, :reload => true, :restart => true, :start => true, :enable => true
       action [:enable,:start]
-    end 
+    end
 
     Chef::Log.info("memcached has been configured correctly.")
   rescue => e
@@ -58,30 +58,28 @@ action :remove do
   begin
 
     logdir = new_resource.logdir
- 
+
     service "memcached" do
       supports :stop => true
       action :stop
-    end     
+    end
 
     # uninstall package
-    yum_package "memcached" do
-      action :purge
-    end    
+    #yum_package "memcached" do
+    #  action :purge
+    #end    
 
-    directory logdir do
-      action :delete
-      recursive true   
-    end
+    #directory logdir do
+    #  action :delete
+    #  recursive true   
+    #end
 
-    file "/etc/sysconfig/memcached" do
-      action :delete
-    end
+    #file "/etc/sysconfig/memcached" do
+    #  action :delete
+    #end
 
     Chef::Log.info("memcached has been deleted correctly.")
   rescue => e
     Chef::Log.error(e.message)
   end
 end
-
-
