@@ -96,7 +96,7 @@ action :register do #Usually used to register in consul
       query["ID"] = "memcached-#{node["hostname"]}"
       query["Name"] = "memcached"
       query["Address"] = "#{node["ipaddress"]}"
-      query["Port"] = 0
+      query["Port"] = 11211
       json_query = Chef::JSONCompat.to_json(query)
 
       execute 'Register service in consul' do
