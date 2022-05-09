@@ -50,12 +50,6 @@ action :add do
       service_name "memcached"
       supports :status => true, :reload => true, :restart => true, :start => true, :enable => true
       action [:enable,:start]
-      notifies :run, 'execute[populate_darklist]', :delayed
-    end
-
-    execute 'populate_darklist' do
-      command '/usr/lib/redborder/bin/rb_update_darklist.sh -f'
-      action :nothing
     end
 
     Chef::Log.info("memcached has been configured correctly.")
