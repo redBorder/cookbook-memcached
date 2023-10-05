@@ -12,7 +12,7 @@ action :add do
 
 
     # install package
-    yum_package "memcached" do
+    dnf_package "memcached" do
       action :install
       flush_cache [ :before ]
     end
@@ -69,7 +69,7 @@ action :remove do
     end
 
     # uninstall package
-    #yum_package "memcached" do
+    #dnf_package "memcached" do
     #  action :purge
     #end    
 
