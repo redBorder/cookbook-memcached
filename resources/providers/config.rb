@@ -106,7 +106,7 @@ action :register do #Usually used to register in consul
         action :nothing
       end.run_action(:run)
 
-      node.default["memcached"]["registered"] = true
+      node.normal["memcached"]["registered"] = true
     end
     Chef::Log.info("memcached service has been registered in consul")
   rescue => e
@@ -122,7 +122,7 @@ action :deregister do #Usually used to deregister from consul
         action :nothing
       end.run_action(:run)
 
-      node.default["memcached"]["registered"] = false
+      node.normal["memcached"]["registered"] = false
     end
     Chef::Log.info("memcached service has been deregistered from consul")
   rescue => e
