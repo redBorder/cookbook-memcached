@@ -12,13 +12,15 @@ action :add do
 
 
     # install package
-    yum_package "memcached" do
+    dnf_package "memcached" do
       action :install
       flush_cache [ :before ]
     end
 
-    user user do
-      action :create
+    execute "create_user" do
+      command "/usr/sbin/useradd #{user}"
+      ignore_failure true
+      not_if "getent passwd #{user}"
     end
 
     directory logdir do
@@ -69,7 +71,7 @@ action :remove do
     end
 
     # uninstall package
-    #yum_package "memcached" do
+    #dnf_package "memcached" do
     #  action :purge
     #end    
 
@@ -104,7 +106,7 @@ action :register do #Usually used to register in consul
         action :nothing
       end.run_action(:run)
 
-      node.set["memcached"]["registered"] = true
+      node.normal["memcached"]["registered"] = true
     end
     Chef::Log.info("memcached service has been registered in consul")
   rescue => e
@@ -120,7 +122,7 @@ action :deregister do #Usually used to deregister from consul
         action :nothing
       end.run_action(:run)
 
-      node.set["memcached"]["registered"] = false
+      node.normal["memcached"]["registered"] = false
     end
     Chef::Log.info("memcached service has been deregistered from consul")
   rescue => e
