@@ -9,6 +9,7 @@ action :add do
     cachesize = new_resource.cachesize
     maxitemsize = new_resource.maxitemsize
     options = new_resource.options
+    ipaddress = new_resource.ipaddress
 
 
     # install package
@@ -64,6 +65,7 @@ action :remove do
   begin
 
     logdir = new_resource.logdir
+    ipaddress = new_resource.ipaddress
 
     service "memcached" do
       supports :stop => true
@@ -93,11 +95,13 @@ end
 
 action :register do #Usually used to register in consul
   begin
+    ipaddress = new_resource.ipaddress
+
     if !node["memcached"]["registered"]
       query = {}
       query["ID"] = "memcached-#{node["hostname"]}"
       query["Name"] = "memcached"
-      query["Address"] = "#{node["ipaddress"]}"
+      query["Address"] = ipaddress
       query["Port"] = 11211
       json_query = Chef::JSONCompat.to_json(query)
 
@@ -116,6 +120,8 @@ end
 
 action :deregister do #Usually used to deregister from consul
   begin
+    ipaddress = new_resource.ipaddress
+
     if node["memcached"]["registered"]
       execute 'Deregister service in consul' do
         command "curl -X PUT http://localhost:8500/v1/agent/service/deregister/memcached-#{node["hostname"]} &>/dev/null"
