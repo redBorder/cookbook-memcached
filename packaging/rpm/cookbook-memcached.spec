@@ -45,6 +45,8 @@ esac
 %doc
 
 %changelog
+* Fri Dec 15 2023 David Vanhoucke <dvanhoucke@redborder.com> - 1.0.3-1
+- Add support for sync ip
 * Fri Jan 07 2022 David Vanhoucke <dvanhoucke@redborder.com> - 1.0.2-1
 - change register to consul
 * Tue Oct 18 2016 Alberto Rodríguez <arodriguez@redborder.com> - 1.0.0-1
