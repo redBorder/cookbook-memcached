@@ -15,4 +15,4 @@ attribute :maxconn, :kind_of => Fixnum, :default => 1024
 attribute :cachesize, :kind_of => Fixnum, :default => 512
 attribute :maxitemsize, :kind_of => String, :default => "10m"
 attribute :options, :kind_of => String, :default => ""
-
+attribute :ipaddress, :kind_of => String, :default => "127.0.0.1"
