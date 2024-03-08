@@ -31,6 +31,13 @@ action :add do
       action :create
     end
 
+    directory "/etc/systemd/system/memcached.service.d/" do
+      owner "root"
+      group "root"
+      mode 0755
+      action :create
+    end
+
     template "/etc/sysconfig/memcached" do
       source "memcached.erb"
       owner "root"
@@ -47,6 +54,21 @@ action :add do
         :options => options
       })
       notifies :restart, "service[memcached]", :delayed
+    end
+
+    template "/etc/systemd/system/memcached.service.d/override.conf" do
+      source "override_conf.erb"
+      owner "root"
+      group "root"
+      mode 0644
+      cookbook "memcached"
+      notifies :restart, "service[memcached]", :delayed
+      notifies :run, "execute[systemctl daemon-reload]", :immediately
+    end
+    
+    execute "systemctl daemon-reload" do
+      command "systemctl daemon-reload"
+      action :nothing
     end
 
     service "memcached" do
