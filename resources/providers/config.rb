@@ -1,7 +1,6 @@
 action :add do
   begin
     memory = new_resource.memory
-    logdir = new_resource.logdir
     user = new_resource.user
     group = new_resource.group
     port = new_resource.port
@@ -24,13 +23,6 @@ action :add do
       not_if "getent passwd #{user}"
     end
 
-    directory logdir do
-      owner user
-      group group
-      mode 0770
-      action :create
-    end
-
     template "/etc/sysconfig/memcached" do
       source "memcached.erb"
       owner "root"
@@ -43,7 +35,6 @@ action :add do
         :maxconn => maxconn,
         :cachesize => cachesize,
         :maxitemsize => maxitemsize,
-        :logdir => logdir,
         :options => options
       })
       notifies :restart, "service[memcached]", :delayed
@@ -64,7 +55,6 @@ end
 action :remove do
   begin
 
-    logdir = new_resource.logdir
     ipaddress = new_resource.ipaddress
 
     service "memcached" do
@@ -76,11 +66,6 @@ action :remove do
     #dnf_package "memcached" do
     #  action :purge
     #end    
-
-    #directory logdir do
-    #  action :delete
-    #  recursive true   
-    #end
 
     #file "/etc/sysconfig/memcached" do
     #  action :delete
