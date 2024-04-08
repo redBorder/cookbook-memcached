@@ -1,6 +1,11 @@
 cookbook memcached CHANGELOG
 ==========================
 
+1.0.5
+-----
+- [manegron] 
+  - Added maxitemsize as option
+
 1.0.4
 -----
 - [manegron] 
