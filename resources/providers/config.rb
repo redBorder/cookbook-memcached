@@ -6,7 +6,6 @@ action :add do
     port = new_resource.port
     maxconn = new_resource.maxconn
     cachesize = new_resource.cachesize
-    maxitemsize = new_resource.maxitemsize
     options = new_resource.options
     ipaddress = new_resource.ipaddress
 
@@ -34,7 +33,6 @@ action :add do
         :user => user,
         :maxconn => maxconn,
         :cachesize => cachesize,
-        :maxitemsize => maxitemsize,
         :options => options
       })
       notifies :restart, "service[memcached]", :delayed
