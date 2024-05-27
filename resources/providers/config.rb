@@ -91,7 +91,7 @@ action :deregister do # Usually used to deregister from consul
   begin
     if node['memcached']['registered']
       execute 'Deregister service in consul' do
-        command "curl -X PUT http://localhost:8500/v1/agent/service/deregister/memcached-#{node["hostname"]} &>/dev/null"
+        command "curl -X PUT http://localhost:8500/v1/agent/service/deregister/memcached-#{node['hostname']} &>/dev/null"
         action :nothing
       end.run_action(:run)
 
