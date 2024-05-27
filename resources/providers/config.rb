@@ -1,50 +1,40 @@
 action :add do
   begin
-    memory = new_resource.memory
     user = new_resource.user
-    group = new_resource.group
     port = new_resource.port
     maxconn = new_resource.maxconn
     cachesize = new_resource.cachesize
     options = new_resource.options
-    ipaddress = new_resource.ipaddress
-
 
     # install package
-    dnf_package "memcached" do
+    dnf_package 'memcached' do
       action :install
       flush_cache [ :before ]
     end
 
-    execute "create_user" do
+    execute 'create_user' do
       command "/usr/sbin/useradd #{user}"
       ignore_failure true
       not_if "getent passwd #{user}"
     end
 
-    template "/etc/sysconfig/memcached" do
-      source "memcached.erb"
-      owner "root"
-      group "root"
-      mode 0644
-      cookbook "memcached"
-      variables ({
-        :port => port,
-        :user => user,
-        :maxconn => maxconn,
-        :cachesize => cachesize,
-        :options => options
-      })
-      notifies :restart, "service[memcached]", :delayed
+    template '/etc/sysconfig/memcached' do
+      source 'memcached.erb'
+      owner 'root'
+      group 'root'
+      mode '0644'
+      cookbook 'memcached'
+      variables({ port: port, user: user, maxconn: maxconn, cachesize: cachesize, options: options })
+      notifies :restart, 'service[memcached]', :delayed
     end
 
-    service "memcached" do
-      service_name "memcached"
-      supports :status => true, :reload => true, :restart => true, :start => true, :enable => true
-      action [:enable,:start]
+    service 'memcached' do
+      service_name 'memcached'
+      supports status: true, reload: true, restart: true, start: true, enable: true
+      action [:enable, :start]
     end
 
-    Chef::Log.info("memcached has been configured correctly.")
+    Chef::Log.info('memcached has been configured correctly.')
   rescue => e
     Chef::Log.error(e.message)
   end
@@ -52,40 +42,36 @@ end
 
 action :remove do
   begin
-
-    ipaddress = new_resource.ipaddress
-
-    service "memcached" do
-      supports :stop => true
+    service 'memcached' do
+      supports stop: true
       action :stop
     end
 
     # uninstall package
-    #dnf_package "memcached" do
-    #  action :purge
-    #end    
+    # dnf_package "memcached" do
+    #   action :purge
+    # end
 
-    #file "/etc/sysconfig/memcached" do
-    #  action :delete
-    #end
+    # file "/etc/sysconfig/memcached" do
+    #   action :delete
+    # end
 
-    Chef::Log.info("memcached has been deleted correctly.")
+    Chef::Log.info('memcached has been deleted correctly.')
   rescue => e
     Chef::Log.error(e.message)
   end
 end
 
-
-action :register do #Usually used to register in consul
+action :register do # Usually used to register in consul
   begin
     ipaddress = new_resource.ipaddress
 
-    if !node["memcached"]["registered"]
+    unless node['memcached']['registered']
       query = {}
-      query["ID"] = "memcached-#{node["hostname"]}"
-      query["Name"] = "memcached"
-      query["Address"] = ipaddress
-      query["Port"] = 11211
+      query['ID'] = "memcached-#{node['hostname']}"
+      query['Name'] = 'memcached'
+      query['Address'] = ipaddress
+      query['Port'] = 11211
       json_query = Chef::JSONCompat.to_json(query)
 
       execute 'Register service in consul' do
@@ -93,27 +79,25 @@ action :register do #Usually used to register in consul
         action :nothing
       end.run_action(:run)
 
-      node.normal["memcached"]["registered"] = true
+      node.normal['memcached']['registered'] = true
     end
-    Chef::Log.info("memcached service has been registered in consul")
+    Chef::Log.info('memcached service has been registered in consul')
   rescue => e
     Chef::Log.error(e.message)
   end
 end
 
-action :deregister do #Usually used to deregister from consul
+action :deregister do # Usually used to deregister from consul
   begin
-    ipaddress = new_resource.ipaddress
-
-    if node["memcached"]["registered"]
+    if node['memcached']['registered']
       execute 'Deregister service in consul' do
         command "curl -X PUT http://localhost:8500/v1/agent/service/deregister/memcached-#{node["hostname"]} &>/dev/null"
         action :nothing
       end.run_action(:run)
 
-      node.normal["memcached"]["registered"] = false
+      node.normal['memcached']['registered'] = false
     end
-    Chef::Log.info("memcached service has been deregistered from consul")
+    Chef::Log.info('memcached service has been deregistered from consul')
   rescue => e
     Chef::Log.error(e.message)
   end
