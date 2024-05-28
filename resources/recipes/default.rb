@@ -1,12 +1,8 @@
-#
-# Cookbook Name:: memcached
+# Cookbook:: memcached
 # Recipe:: default
-#
-# redborder 2016
-#
-# AFFERO GENERAL PUBLIC LICENSE V3
-#
+# Copyright:: 2024, redborder
+# License:: Affero General Public License, Version 3
 
-memcached_config "config" do
+memcached_config 'config' do
   action :add
 end
