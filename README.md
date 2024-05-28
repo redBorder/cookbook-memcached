@@ -1,4 +1,4 @@
-# memcached cookbook
+# cookbook-memcached
 
 Chef cookbook to install and configure redborder memcached
 
