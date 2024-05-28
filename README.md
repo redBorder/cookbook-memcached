@@ -1,6 +1,6 @@
 # memcached cookbook
 
-cookbook to install and configure redborder memcached
+Chef cookbook to install and configure redborder memcached
 
 ### Platforms
 
@@ -8,7 +8,7 @@ cookbook to install and configure redborder memcached
 
 ### Chef
 
-- Chef 12.0 or later
+- Chef 15.7.0  or later
 
 ## Contributing
 
@@ -19,8 +19,6 @@ cookbook to install and configure redborder memcached
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-## License and Authors
-
-Authors: Enrique Jimenez <ejimenez@redborder.com>
+## License
 
 LICENSE: AFFERO GENERAL PUBLIC LICENSE, Version 3, 19 November 2007
