@@ -1,6 +1,6 @@
 # cookbook-memcached
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Chef cookbook to install and configure redborder memcached
@@ -46,6 +46,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/cjmateos"><img src="https://avatars.githubusercontent.com/u/664159?v=4?s=100" width="100px;" alt="Carlos J Mateos"/><br /><sub><b>Carlos J Mateos</b></sub></a><br /><a href="https://github.com/redBorder/cookbook-memcached/commits?author=cjmateos" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Chorro"><img src="https://avatars.githubusercontent.com/u/6649660?v=4?s=100" width="100px;" alt="Juan J Chorro Bergillo"/><br /><sub><b>Juan J Chorro Bergillo</b></sub></a><br /><a href="https://github.com/redBorder/cookbook-memcached/commits?author=Chorro" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
