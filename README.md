@@ -19,11 +19,6 @@ Chef cookbook to install and configure redborder memcached
 4. Write tests for your change (if applicable)
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
-
-## License
-
-LICENSE: AFFERO GENERAL PUBLIC LICENSE, Version 3, 19 November 2007
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -55,3 +50,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## License
+
+LICENSE: AFFERO GENERAL PUBLIC LICENSE, Version 3, 19 November 2007
