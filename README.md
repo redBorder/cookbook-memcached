@@ -8,7 +8,7 @@
 [build-url]: https://github.com/redBorder/cookbook-memcached/actions/workflows/rpm.yml?query=branch%3Amaster
 [linters-shield]: https://github.com/redBorder/cookbook-memcached/actions/workflows/lint.yml/badge.svg?event=push
 [linters-url]: https://github.com/redBorder/cookbook-memcached/actions/workflows/lint.yml
-[contributors-shield]: https://img.shields.io/badge/all_contributors-9-orange.svg
+[contributors-shield]: https://img.shields.io/badge/all_contributors-grey.svg
 [contributors-url]: https://github.com/redBorder/cookbook-memcached/graphs/contributors
 
 Chef cookbook to install and configure redborder memcached
