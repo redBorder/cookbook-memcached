@@ -1,8 +1,7 @@
 # cookbook-memcached
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![Build Status](https://img.shields.io/circleci/project/all-contributors/all-contributors/master.svg)](https://circleci.com/gh/all-contributors/workflows/all-contributors/tree/master)
+![linters](https://github.com/redBorder/cookbook-rb-logstatter/actions/workflows/lint.yml/badge.svg?event=push)
 [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-![linters](https://github.com/redBorder/cookbook-memcached/actions/workflows/lint.yml/badge.svg?event=push)
 
 Chef cookbook to install and configure redborder memcached
 
