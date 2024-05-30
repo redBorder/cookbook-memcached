@@ -1,8 +1,5 @@
 # cookbook-memcached
-[![Build Status](https://github.com/redBorder/cookbook-memcached/actions/workflows/rpm.yml/badge.svg?branch=master)](https://github.com/redBorder/cookbook-memcached/actions/workflows/rpm.yml?query=branch%3Amaster)
-[![linters](https://github.com/redBorder/cookbook-memcached/actions/workflows/lint.yml/badge.svg?event=push)](https://github.com/redBorder/cookbook-memcached/actions/workflows/lint.yml)
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
-
+[![Build Status](https://github.com/redBorder/cookbook-memcached/actions/workflows/rpm.yml/badge.svg?branch=master)](https://github.com/redBorder/cookbook-memcached/actions/workflows/rpm.yml?query=branch%3Amaster) [![linters](https://github.com/redBorder/cookbook-memcached/actions/workflows/lint.yml/badge.svg?event=push)](https://github.com/redBorder/cookbook-memcached/actions/workflows/lint.yml) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section --> [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-) <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Chef cookbook to install and configure redborder memcached
 
