@@ -23,6 +23,9 @@ chmod -R 0755 %{buildroot}/var/chef/cookbooks/memcached
 install -D -m 0644 README.md %{buildroot}/var/chef/cookbooks/memcached/README.md
 
 %pre
+if [ -d /var/chef/cookbooks/memcached ]; then
+    rm -rf /var/chef/cookbooks/memcached
+fi
 
 %post
 case "$1" in
@@ -36,6 +39,12 @@ case "$1" in
   ;;
 esac
 
+%postun
+# Deletes directory when uninstall the package
+if [ "$1" = 0 ] && [ -d /var/chef/cookbooks/memcached ]; then
+  rm -rf /var/chef/cookbooks/memcached
+fi
+
 %files
 %defattr(0755,root,root)
 /var/chef/cookbooks/memcached
@@ -45,9 +54,14 @@ esac
 %doc
 
 %changelog
-* Fri Dec 15 2023 David Vanhoucke <dvanhoucke@redborder.com> - 1.0.3-1
+* Thu Oct 10 2024 Miguel Negrón <manegron@redborder.com>
+- Add pre and postun
+
+* Fri Dec 15 2023 David Vanhoucke <dvanhoucke@redborder.com>
 - Add support for sync ip
-* Fri Jan 07 2022 David Vanhoucke <dvanhoucke@redborder.com> - 1.0.2-1
+
+* Fri Jan 07 2022 David Vanhoucke <dvanhoucke@redborder.com>
 - change register to consul
-* Tue Oct 18 2016 Alberto Rodríguez <arodriguez@redborder.com> - 1.0.0-1
+
+* Tue Oct 18 2016 Alberto Rodríguez <arodriguez@redborder.com>
 - first spec version
