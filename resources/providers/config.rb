@@ -9,7 +9,6 @@ action :add do
     # install package
     dnf_package 'memcached' do
       action :install
-      flush_cache [ :before ]
     end
 
     execute 'create_user' do

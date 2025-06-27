@@ -1,6 +1,11 @@
 cookbook-memcached CHANGELOG
 ===============
 
+## 1.0.8
+
+  - nilsver
+    - [21d8a16] remove flush cache
+
 ## 1.0.7
 
   - Miguel Negrón
