@@ -1,6 +1,11 @@
 cookbook-memcached CHANGELOG
 ===============
 
+## 1.0.9
+
+  - jnavarrorb
+    - [04bdfbe] Remove executable permissions on non-executable files
+
 ## 1.0.8
 
   - nilsver
