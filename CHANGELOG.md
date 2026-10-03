@@ -1,6 +1,11 @@
 cookbook-memcached CHANGELOG
 ===============
 
+## 1.0.10
+
+  - manegron
+    - [f37bd6c] Upload cookbook only if opscode-erchef is active
+
 ## 1.0.9
 
   - jnavarrorb
